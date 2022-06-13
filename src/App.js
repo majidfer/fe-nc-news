@@ -1,6 +1,7 @@
 import "./App.css";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
+import Articles from "./components/Articles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         </header>
         <Nav />
         <Routes>
+          <Route path="/" element={<Articles />} />
           <Route path="/users" element={<Users />} />
         </Routes>
       </div>
