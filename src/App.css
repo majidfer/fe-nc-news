@@ -20,3 +20,40 @@ nav {
   margin: 1rem;
   list-style: none;
 }
+
+.articles {
+  border: 2px solid orange;
+  text-align: justify;
+}
+
+.articles > ul {
+  padding-left: 0;
+}
+
+.article-card {
+  padding: 0;
+  margin: 0.5rem;
+  border: 2px solid red;
+  list-style: none;
+}
+
+article > h2 {
+  margin: 1rem;
+}
+
+.article-info {
+  display: flex;
+}
+
+.article-info > p {
+  flex-wrap: wrap;
+}
+
+.article-info > p {
+  margin: 4px 1rem;
+  list-style: none;
+}
+
+@media only screen and (min-width: 600px) {
+  /* css for desktop here */
+}
