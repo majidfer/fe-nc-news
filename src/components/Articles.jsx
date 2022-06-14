@@ -1,41 +1,56 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
+import { useParams } from "react-router-dom";
 
 function Articles() {
-  const[currArticles, setArticles] = useState([]);
-  const[isLoading, setIsLoading] = useState(true);
+  const [currArticles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFound, setIsFound] = useState(true);
+
+  const { topic } = useParams();
 
   useEffect(() => {
-    getArticles().then((articlesFromApi) => {
+    getArticles(topic).then((articlesFromApi) => {
       setArticles(articlesFromApi.articles);
+      articlesFromApi.articles.length === 0
+        ? setIsFound(false)
+        : setIsFound(true) ;
       setIsLoading(false);
-    })
-  }, []);
+    });
+  }, [topic]);
 
-  if (isLoading) return <p>... loading</p>
+  if (isLoading) return <p>... loading</p>;
+  if (!isFound) return <p>Oppss... some error occured with {topic} topic</p>;
   return (
-    <div className="articles">
-      <ul>
-        {currArticles.map((article) => {
-          return (
-            <li key={article.article_id} className="article-card">
-              <article>
-                <h2>{article.title}</h2>
-                <div className="article-info">
-                  <p>Created: {article.created_at.slice(0, 10)}</p>
-                  <p>Topic: {article.topic}</p>
-                  <p>Author: {article.author}</p>
-                </div>
-                <div className="article-info">
-                  <p>{article.votes} {(article.votes > 1 ? `votes` : `vote`)}</p>
-                  <p>{article.comment_count} {(article.comment_count > 1 ? `comments` : `comment`)}</p>
-                </div>
-              </article>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <div className="articles">
+        <ul>
+          {currArticles.map((article) => {
+            return (
+              <li key={article.article_id} className="article-card">
+                <article>
+                  <h2>{article.title}</h2>
+                  <div className="article-info">
+                    <p>Created: {article.created_at.slice(0, 10)}</p>
+                    <p>Topic: {article.topic}</p>
+                    <p>Author: {article.author}</p>
+                  </div>
+                  <div className="article-info">
+                    <p>
+                      {article.votes} {article.votes > 1 ? `votes` : `vote`}
+                    </p>
+                    <p>
+                      {article.comment_count}{" "}
+                      {article.comment_count > 1 ? `comments` : `comment`}
+                    </p>
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 }
 
