@@ -9,11 +9,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          <h1>This is Northcoders News!</h1>
+          <h1>This is Northcoders News by Feri!</h1>
         </header>
         <Nav />
         <Routes>
           <Route path="/" element={<Articles />} />
+          <Route path="/:topic" element={<Articles />} />
           <Route path="/users" element={<Users />} />
         </Routes>
       </div>
