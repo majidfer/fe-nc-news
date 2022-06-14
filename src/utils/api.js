@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const ncNewsApi = axios.create({
-    baseURL: "https://nc-news-feri.herokuapp.com/api",
-})
+  baseURL: "https://nc-news-feri.herokuapp.com/api",
+});
 
-export const getArticles = () => {
-    return ncNewsApi.get("/articles").then(({data}) => {
-        return data;
-    })
-}
+export const getArticles = (topic) => {
+  return ncNewsApi.get("/articles", { params: { topic } }).then(({ data }) => {
+    return data;
+  });
+};
