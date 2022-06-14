@@ -14,13 +14,16 @@ function Articles() {
       setArticles(articlesFromApi.articles);
       articlesFromApi.articles.length === 0
         ? setIsFound(false)
-        : setIsFound(true) ;
+        : setIsFound(true);
       setIsLoading(false);
     });
   }, [topic]);
 
   if (isLoading) return <p>... loading</p>;
-  if (!isFound) return <p>Oppss... some error occured with {topic} topic</p>;
+  if (!isFound)
+    return (
+      <p className="error">Oppss... some error occured with {topic} topic</p>
+    );
   return (
     <>
       <div className="articles">
