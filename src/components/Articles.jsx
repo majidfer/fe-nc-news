@@ -53,9 +53,7 @@ function Articles({ topicFromArticle }) {
                   </div>
                   <div className="article-info">
                     <p>
-                      {article.votes} {article.votes > 1 ? `votes` : <span className="material-symbols-outlined">
-favorite
-</span>}
+                      {article.votes} {article.votes > 1 ? `votes` : `vote`}
                     </p>
                     <p>
                       {article.comment_count}{" "}
