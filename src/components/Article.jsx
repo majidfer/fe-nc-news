@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticle } from "../utils/api";
 import Articles from "./Articles";
+import Comments from "./Comments";
 import Vote from "./Vote";
 
 function Article() {
@@ -42,10 +43,14 @@ function Article() {
           </div>
           <p className="article-body">{currArticle.body}</p>
           <div className="article-info">
-            <Vote currArticle={currArticle}/>
-            <div className="comments">
+            <Vote currArticle={currArticle} />
+          </div>
+          <div className="comments">
+            <div className="comments-count">
+              <span className="material-symbols-outlined">comment</span>
               <p>{currArticle.comment_count} comments</p>
             </div>
+            <Comments article_id={currArticle.article_id} />
           </div>
         </article>
       </div>
