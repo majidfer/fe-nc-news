@@ -42,7 +42,7 @@ function Articles({ topicFromArticle }) {
               <li key={article.article_id} className="article-card">
                 <article>
                   <h2>
-                    <Link to={`/articles/${article.article_id}`} target="_top">
+                    <Link to={`/articles/${article.article_id}`}>
                       {article.title}
                     </Link>
                   </h2>
@@ -53,7 +53,9 @@ function Articles({ topicFromArticle }) {
                   </div>
                   <div className="article-info">
                     <p>
-                      {article.votes} {article.votes > 1 ? `votes` : `vote`}
+                      {article.votes} {article.votes > 1 ? `votes` : <span className="material-symbols-outlined">
+favorite
+</span>}
                     </p>
                     <p>
                       {article.comment_count}{" "}
