@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticle } from "../utils/api";
 import Articles from "./Articles";
+import Vote from "./Vote";
 
 function Article() {
   const [currArticle, setArticle] = useState({ created_at: "0000-00-00" });
-
   const [isLoading, setIsLoading] = useState(true);
-
   const [isError, setError] = useState(null);
 
   const { article_id } = useParams();
@@ -43,8 +42,10 @@ function Article() {
           </div>
           <p className="article-body">{currArticle.body}</p>
           <div className="article-info">
-            <p>{currArticle.votes} votes</p>
-            <p>{currArticle.comment_count} comments</p>
+            <Vote currArticle={currArticle}/>
+            <div className="comments">
+              <p>{currArticle.comment_count} comments</p>
+            </div>
           </div>
         </article>
       </div>
