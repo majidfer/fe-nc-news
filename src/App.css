@@ -71,13 +71,26 @@ article > h2 {
   margin: 0;
 }
 
-
-
 .error {
   border: 2px solid red;
   padding: 1rem;
   margin: 1rem;
   border-radius: 10px;
+}
+
+.vote {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.vote > p {
+  margin: 1rem 10px;
+}
+
+.vote-button {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (min-width: 600px) {
