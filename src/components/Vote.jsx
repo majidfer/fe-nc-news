@@ -12,7 +12,6 @@ function Vote({ currArticle }) {
         setCurrVote((currVote) => currVote + 1);
         setVoteChange((currVote) => currVote + 1);
         setError(null);
-        console.log(updatedArticle);
       })
       .catch((err) => {
         setError("Something went wrong, please try again.");
@@ -25,7 +24,6 @@ function Vote({ currArticle }) {
         setCurrVote((currVote) => currVote - 1);
         setVoteChange((currVote) => currVote - 1);
         setError(null);
-        console.log(updatedArticle);
       })
       .catch((err) => {
         setError("Something went wrong, please try again.");
