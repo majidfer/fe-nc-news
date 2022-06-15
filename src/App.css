@@ -1,3 +1,7 @@
+* {
+  padding:0;
+}
+
 .App {
   text-align: center;
 }
@@ -23,7 +27,7 @@ nav {
   list-style: none;
 }
 
-.articles {
+.articles, .article {
   text-align: justify;
   background-color: #F4F4F9;
 }
@@ -41,22 +45,33 @@ nav {
   list-style: none;
 }
 
+.article {
+  /* border: 2px solid red; */
+  margin: 0.5rem;
+}
+
 article > h2 {
   margin: 1rem;
 }
 
 .article-info {
   display: flex;
+  justify-content: space-around;
 }
 
 .article-info > p {
   flex-wrap: wrap;
-}
-
-.article-info > p {
   margin: 4px 1rem;
   list-style: none;
 }
+
+.article-body {
+  /* border: 2px solid red; */
+  padding: 1rem;
+  margin: 0;
+}
+
+
 
 .error {
   border: 2px solid red;

@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Users from "./components/Users";
 import Articles from "./components/Articles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Article from "./components/Article";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/:topic" element={<Articles />} />
+          <Route path="/articles/:article_id" element={<Article />} />
           <Route path="/users" element={<Users />} />
         </Routes>
       </div>
