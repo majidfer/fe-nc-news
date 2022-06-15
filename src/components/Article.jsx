@@ -24,7 +24,7 @@ function Article() {
   }, [article_id]);
 
   if (isError) {
-    return <p className="error">Oopps.. some error occured!!</p>;
+    return <p className="error">Oopps.. {isError.msg}</p>;
   }
 
   if (isLoading) {
