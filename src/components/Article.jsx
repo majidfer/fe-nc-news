@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getArticle } from "../utils/api";
 import Articles from "./Articles";
 import Comments from "./Comments";
+import NewComment from "./NewComment";
 import Vote from "./Vote";
 
 function Article() {
@@ -46,6 +47,7 @@ function Article() {
             <Vote currArticle={currArticle} />
           </div>
           <div className="comments">
+            <NewComment article_id={article_id} />
             <div className="comments-count">
               <span className="material-symbols-outlined">comment</span>
               <p>{currArticle.comment_count} comments</p>
