@@ -35,3 +35,11 @@ export const getComments = (article_id) => {
     return data;
   });
 };
+
+export const postComment = (article_id, username, body) => {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, {username, body})
+    .then(({ data }) => {
+      return data;
+    });
+};
