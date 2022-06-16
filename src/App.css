@@ -118,7 +118,7 @@ article > h2 {
 }
 
 .comments-count > span {
-  margin: 15px 5px ;
+  margin: 15px 5px;
 }
 
 .comment-info {
@@ -153,12 +153,29 @@ form > button {
   margin-left: 15rem;
 }
 
-.comment-form > form > label, input, textarea, button {
+.comment-form > form > label,
+input,
+textarea,
+button {
   margin: 0.4rem;
+}
+
+.sort-article {
+  margin: 1rem;
+  text-align: justify;
+}
+
+.sort-article > form > label, select {
+  margin: 2px;
+  padding: 2px;
 }
 
 @media only screen and (min-width: 600px) {
   /* css for desktop here */
+  .App {
+    max-width: 1100px;
+  }
+
   .comment-info {
     display: flex;
     list-style: none;
