@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
-import { getComments } from "../utils/api";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { deleteComment, getComments } from "../utils/api";
 
 function Comments({ article_id }) {
   const [currComments, setCurrentComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setError] = useState(null);
+  const [isSuccess, setSuccess] = useState(null);
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getComments(article_id).then((commentsFromApi) => {
@@ -12,9 +17,22 @@ function Comments({ article_id }) {
     });
   }, [article_id]);
 
+  const handleClick = (comment_id) => {
+    deleteComment(comment_id)
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch((err) => {
+        setError(err.response.data.msg);
+      });
+  };
+
   if (isLoading) {
     return <p>... loading</p>;
   }
+
+  if (isError) return <p className="error">{isError}</p>;
+  if (isSuccess) return <p className="success">Your comment has been deleted</p>;
 
   return (
     <section>
@@ -28,6 +46,15 @@ function Comments({ article_id }) {
               </ul>
               <div className="comment-body">
                 <p>{comment.body}</p>
+              </div>
+              <div className="comment-button">
+                <button
+                  hidden={user.username !== comment.author}
+                  className="delete-comment-button"
+                  onClick={() => handleClick(comment.comment_id)}
+                >
+                  Delete comment
+                </button>
               </div>
             </li>
           );
