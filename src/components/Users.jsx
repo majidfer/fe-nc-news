@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Users() {
   return (
-    <div>This is users page</div>
-  )
+    <div>
+      <p className="success">This is users page</p>
+    </div>
+  );
 }
 
 export default Users;
