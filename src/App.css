@@ -148,9 +148,20 @@ article > h2 {
   height: 15rem;
 }
 
+.comment-button {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-comment-button {
+  padding: 0.5rem;
+}
+
 form > button {
   padding: 10px;
   margin-left: 15rem;
+  
 }
 
 .comment-form > form > label,
