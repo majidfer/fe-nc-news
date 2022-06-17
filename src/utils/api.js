@@ -4,8 +4,8 @@ const ncNewsApi = axios.create({
   baseURL: "https://nc-news-feri.herokuapp.com/api",
 });
 
-export const getArticles = (topic) => {
-  return ncNewsApi.get("/articles", { params: { topic } }).then(({ data }) => {
+export const getArticles = (topic, sort_by, order) => {
+  return ncNewsApi.get("/articles", { params: { topic, sort_by, order } }).then(({ data }) => {
     return data;
   });
 };

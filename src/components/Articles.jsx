@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import SortArticle from "./SortArticle";
 
 function Articles({ topicFromArticle }) {
   const [currArticles, setArticles] = useState([]);
@@ -12,16 +13,20 @@ function Articles({ topicFromArticle }) {
   if (topicFromArticle) {
     topic = topicFromArticle;
   }
+  
+  const [searchParams] = useSearchParams();
+  const sort_by = searchParams.get('sort_by');
+  const order = searchParams.get("order");
 
   useEffect(() => {
-    getArticles(topic).then((articlesFromApi) => {
+    getArticles(topic, sort_by, order).then((articlesFromApi) => {
       setArticles(articlesFromApi.articles);
       articlesFromApi.articles.length === 0
         ? setIsFound(false)
         : setIsFound(true);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sort_by, order]);
 
   if (isLoading) {
     return <p>... loading</p>;
@@ -35,6 +40,7 @@ function Articles({ topicFromArticle }) {
 
   return (
     <>
+      <SortArticle />
       <div className="articles">
         <ul>
           {currArticles.map((article) => {
