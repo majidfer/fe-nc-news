@@ -7,6 +7,7 @@ import Article from "./components/Article";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import Header from "./components/Header";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [user, setUser] = useState({});
@@ -19,6 +20,7 @@ function App() {
             <Header />
             <Nav />
             <Routes>
+              <Route path="*" element={<NotFound />} />
               <Route path="/" element={<Articles />} />
               <Route path="/:topic" element={<Articles />} />
               <Route path="/articles/:article_id" element={<Article />} />
